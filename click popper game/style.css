@@ -1,0 +1,62 @@
+.btn{
+  cursor: pointer;
+  padding: 15px;
+  border: none;
+  text-align: center;
+  background-color: blue;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9em;
+  box-shadow: 3px 3px 3px grey;
+  border-radius: 3px;
+}
+.btn:hover{
+  opacity: 0.8;
+}
+.btn:active{
+  opacity: 0.6;
+}
+.page{
+  display: none;
+  margin: auto;
+  margin-left: 640px;
+  margin-top: 30px;
+}
+.visible{
+  display: block;
+}
+.pop{
+  border: 1px solid #ddd;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  color: #ddd;
+  font-size: 1.5em;
+  font-family: cursive;
+  }
+.row{
+  display: block;
+}
+.game{
+  border: 1px solid black;
+  margin-top: 30px;
+}
+.active{
+  border: 1px solid blue;
+  background-color: aliceblue;
+  color: black;
+  box-shadow: 4px 4px 4px grey;
+  cursor: pointer;
+}
+.stats{
+  height: 70px;
+  width: 300px;
+  margin-left: 540px;
+  background-color: black;
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  vertical-align: middle;
+}
