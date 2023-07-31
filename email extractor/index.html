@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <title>Javascript Projects</title>
+    <style>
+      .txtarea{
+        margin-bottom: 20px;
+        border: 3px solid grey;
+        display: block;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+      }
+      .btn{
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: rgb(42, 64, 212);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px rgb(86, 85, 85);
+        cursor: pointer;
+        display: block;
+        font-size: 15px;
+      }
+      .btn:active{
+        opacity: 0.8;
+      }
+      .break{
+        color: rgb(42, 64, 212);
+      }
+      .txt{
+        display: block;
+        color: grey;
+        font-size: 25px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <text class="txt">Enter text : </text>
+    <textarea class="txtarea" name="textarea" rows="12" cols="50">hellooo akjsdbn akjdsfn ajskdbv ajbd@email.com askdjlfn aksdjlnakjdfn asdkjfnd asdhf.dj@email.com adsc akjdbf jhbdsvv-bdvs@email.com --------------------- SAMPLE TEXT -----------</textarea>
+    <button class="btn" type="button">Get Emails</button>
+    <span class="counter"></span> 
+    <text class="txt">Emails in Text : </text>
+    <textarea class="txtarea" name="output" rows="12" cols="50"></textarea>
+    <script>
+      const rawTxt = document.querySelector("textarea[name = textarea]");
+      const finTxt = document.querySelector("textarea[name = output]");
+      const btn = document.querySelector("button");
+      const counter = document.querySelector(".counter");
+      btn.addEventListener("click", function () {
+        let temp = rawTxt.value;
+        let exp = /([A-Za-z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi; //refer regexr.com
+        let emaildata = temp.match(exp);
+        let holder = [];
+        for(let i = 0; i < emaildata.length; i++){
+          if(holder.indexOf(emaildata[i]) == -1){
+          holder.push(emaildata[i]);
+          }
+        }
+        let tempHolder = holder.join(";")
+        counter.innerText = "Emails found =  "+holder.length;
+        finTxt.innerText = tempHolder;
+      });
+      finTxt.addEventListener("click",function(){
+        this.select();
+      })
+    </script>
+  </body>
+</html>

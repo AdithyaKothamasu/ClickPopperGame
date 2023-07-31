@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Javascript projects</title>
+    <style>
+      .popup{
+        padding:10px;
+        font-family: cursive;
+        border: 1px solid black;
+        text-align: center;
+        background-color: antiquewhite;
+        cursor: pointer;
+        width: 200px;
+        margin-bottom: 20px;
+      }
+      .close{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: red;
+        color: white;
+        font-size: 0.8em;
+        cursor: pointer;
+        border: none;
+      }
+      .output{
+        position: absolute;
+        background-color:yellow;
+        left: 25%;
+        width: 50%;
+        top: 10%;
+        padding: 15px;
+        border: 2px solid black;
+        min-height: 25%;
+
+      }
+      .message{
+        text-align: center;
+        font-family: sans-serif;
+        margin-top: 20px;
+      }
+      .hide{
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="output hide">
+      <button class="close">close</button>
+      <div class="message">No content yet</div>
+    </div>
+    <div class="popup" data-message="Hello World">Click for message 1</div>
+    <div class="popup" data-message="JS is fun">Click for message 2</div>
+    <div class="popup" data-message="Hola como estas">Click for message 3</div>
+    <script src="script.js"></script>
+  </body>
+</html>
