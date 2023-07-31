@@ -22,7 +22,6 @@ playArea.stats = document.querySelector(".stats");
 playArea.main = document.querySelector(".main");
 playArea.game = document.querySelector(".game");
 playArea.btns = Array.from(document.querySelectorAll(".btn"));
-console.log(playArea);
 document.addEventListener("DOMContentLoaded", getData);
 playArea.pages = Array.from(document.querySelectorAll(".page"));
 
@@ -36,8 +35,6 @@ playArea.btns.forEach(function (item) {
 function getData() {
   playArea.main.classList.add("visible");
   gameObj = data.data;
-  console.log(gameObj);
-  console.log("dom loaded");
   buildBoard();
 }
 
@@ -51,7 +48,6 @@ function buildBoard() {
   playArea.scorer.setAttribute("class", "scorer");
   playArea.scorer.innerHTML = "Press Button to Start";
   playArea.stats.appendChild(playArea.scorer);
-  console.log("ready");
   let rows = 4;
   let cols = 4;
   let count = 0;
@@ -84,7 +80,6 @@ function startGame() {
   player.items = 3;
   playArea.main.classList.remove("visible");
   playArea.game.classList.add("visible");
-  console.log("start");
   player.gameOver = false;
   startPop();
   updateScore();
@@ -101,7 +96,6 @@ function randomUp() {
 }
 
 function hitPop(e) {
-  console.log(e.target.count);
   console.log(e.target.v);
   let newPop = e.target;
   player.score = player.score + newPop.v;
@@ -118,7 +112,6 @@ function hitPop(e) {
 
 function startPop() {
   let newPop = randomUp();
-  console.log(newPop);
   newPop.classList.add("active");
   newPop.addEventListener("click", hitPop);
   const time = Math.round(Math.random() * 1500 + 750);
