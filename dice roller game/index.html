@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>Javascript Projects - Dice Roller Game</title>
+    <style>
+      button{
+        padding: 10px;
+        text-align: center;
+        width: 350px;
+        cursor: pointer;
+        margin-left: 90px;
+      }
+      
+      .output{
+        text-align: center;
+        width: 550px;
+        font-size: 2.5em;
+        font-family: 'Courier New', Courier, monospace;
+        padding: 20px;
+      }
+      .dicer{
+        width: 200px;
+        height: 200px;
+        border: 2px solid black;
+        margin: 30px;
+        text-align: center;
+        padding: 2px;
+        border-radius: 20px;
+        position: relative;
+        left:20%;
+      }
+      .black{
+        background-color: black;
+      }
+      .white{
+        background-color: white;
+      }
+      .dot{
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 7px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="output">Roll the DICE ??</div>
+    <button type="button">Roll</button>
+    <script>
+      const button = document.querySelector("button"); 
+      const output = document.querySelector(".output");
+      const dice = [[5],[1,9],[1,5,9],[1,3,7,9],[1,3,5,7,9],[1,3,4,6,7,9]];
+      button.addEventListener("click",function(){
+       let rollDice = roll(6);
+       console.log(rollDice);
+       let holder = buildDice(rollDice);
+       if(output.children[0]){output.children[0].remove()};
+       output.appendChild(holder);
+      })
+      function roll(num){
+        let rNumber = Math.floor(Math.random()*num) + 1;
+        return rNumber;
+      }
+      function buildDice(num){
+        let div = document.createElement("div");
+        let dieArray = dice[num-1];
+        console.log(dieArray)
+        for(let i = 1; i < 10; i++){
+          let dot = document.createElement("div");
+          dot.setAttribute("class","dot");
+          if(dieArray.includes(i)){
+            dot.classList.add("black");
+          }
+          div.appendChild(dot);
+        }
+        div.setAttribute("class","dicer");
+        output.innerText = "Roll the DICE again ??"
+        button.innerText = "Roll";
+        return div;
+      }
+    </script>
+  </body>
+</html>
