@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <title>Javascript Projects - dynamic typing test</title>
+  </head>
+  <style>
+    button{
+      margin-left: 40px;
+      margin-top: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .words{
+      margin: 40px;
+      width: 550px;
+      height: 200px;
+      font-size: 20px;
+    }
+    .message{
+      margin-left: 40px;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <div class="message"></div>
+    <textarea class="words" cols="75" rows="5" disabled></textarea>
+    <br>
+    <button type="button">Start</button>
+    <script>
+      const wording = ["Do you like JavaScript as much as I do?", "Hope you are having fun this is a simple game you can make.", "Source code is included so you can create your own version of this challenge."];
+      let startTime,endTime;
+      const message = document.querySelector(".message");
+      const playText = document.querySelector("textarea");
+      const button = document.querySelector("button");
+      button.addEventListener("click",function(){
+        console.log(this.innerText);
+        if (this.innerText == "Start"){
+          playText.disabled = false;
+          playGame();
+          playText.value = "";
+        }
+        else if (this.innerText == "Done"){
+          playText.disabled = true;
+          button.innerText = "Start";
+          endGame();
+        }
+      })
+
+      function playGame(){
+        let randomNum = Math.floor(Math.random()* wording.length);
+        message.innerText = wording[randomNum];
+        let date = new Date();
+        startTime = date.getTime();
+        console.log(startTime);
+        console.log(randomNum)
+        button.innerText = "Done";
+      }
+
+      function endGame(){
+        let date = new Date();
+        endTime = date.getTime();
+        console.log(endTime);
+        let totalTime = (endTime - startTime)/1000;
+        console.log(totalTime);
+        let str = playText.value;
+        let wordCount = countWords(str);
+        let speed = Math.round((wordCount/totalTime)*60); //wpm
+        console.log(speed);
+        let finalMessage = "You typed at a speed of "+ speed+" Words per minute.";
+        compareWords(message.innerText,str);
+        if(str != message.innerText){
+          finalMessage += "<br> There were some errors in the wording."
+        }
+        message.innerHTML = finalMessage;
+      }
+
+      function countWords(strWords){
+        let response = strWords.split(' ').length;
+        console.log(response);
+        return response;
+      }
+
+      function compareWords(str1,str2){
+        let words1 = str1.split(' ');
+        let words2 = str2.split(' ');
+        let count = 0;
+        words1.forEach(function(item,index){
+          if(item == words2[index]){
+            count++;
+          }
+
+        })
+        console.log(count+" correct out of "+ words1.length +" words.");
+          
+        
+      }
+    </script>
+
+  </body>
+</html>
